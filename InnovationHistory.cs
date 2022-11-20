@@ -35,28 +35,17 @@ public static class InnovationHistory
 
     private static Innovation CreateInnovation(int fromNode, int toNode, bool newConnection)
     {
-        Innovation innovation;
-        if (newConnection)
+        var innovation = new Innovation
         {
-            innovation = new Innovation
-            {
-                InnovationId = InnovationId,
-                FromNode = fromNode,
-                ToNode = toNode,
-                NewConnection = newConnection,
-                NodeId = null
-            };
-        }
-        else
+            InnovationId = InnovationId,
+            FromNode = fromNode,
+            ToNode = toNode,
+            NewConnection = newConnection,
+            NodeId = newConnection ? null : NodeId
+        };
+
+        if (!newConnection)
         {
-            innovation = new Innovation
-            {
-                InnovationId = InnovationId,
-                FromNode = fromNode,
-                ToNode = toNode,
-                NewConnection = newConnection,
-                NodeId = NodeId
-            };
             NodeId++;
         }
 
